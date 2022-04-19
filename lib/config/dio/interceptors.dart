@@ -1,11 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:reqres_users/config/funx/shared_preferences/shared_preferences.dart';
+import 'package:reqres_users/config/keys/headers.dart';
+import 'package:reqres_users/config/keys/pref_keys.dart';
 import 'package:reqres_users/config/logger/app_logger.dart';
-
-import '../app_urls.dart';
-import '../keys/headers.dart';
-import '../keys/pref_keys.dart';
+import 'package:reqres_users/resources/app_urls.dart';
 
 class AppDioInterceptor extends Interceptor {
   final BuildContext context;

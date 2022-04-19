@@ -40,6 +40,10 @@ dependencies:
   intl: ^0.17.0
   date_format: ^2.0.6
   fialogs: ^2.0.4
+  cached_network_image: ^3.2.0
+  image_cropper: ^1.5.1
+  image_picker: ^0.8.5
+  get: ^4.6.1
 
 
 dev_dependencies:
