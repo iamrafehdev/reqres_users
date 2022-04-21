@@ -8,6 +8,7 @@ import 'package:reqres_users/config/keys/pref_keys.dart';
 import 'package:reqres_users/config/keys/response_code.dart';
 import 'package:reqres_users/config/logger/app_logger.dart';
 import 'package:reqres_users/resources/app_urls.dart';
+import 'package:reqres_users/screens/auth/sign_in_screen.dart';
 import 'package:reqres_users/screens/home_screen.dart';
 import 'package:reqres_users/widgets/dialogs/functions.dart';
 
@@ -39,14 +40,16 @@ class AuthController extends GetxController {
         "password": passwordController.getText(),
       });
 
+      if (_loading) {
+        Get.back();
+        _loading = false;
+      }
+
       var responseStatusCode = response.statusCode;
       responseData = response.data;
 
       if (responseStatusCode == StatusCode.OK) {
-        if (_loading) {
-          Get.back();
-          _loading = false;
-        }
+
         String authToken = responseData['token'];
         logger.i(responseData);
         await Prefs.getPrefs().then((prefs) {
@@ -72,5 +75,36 @@ class AuthController extends GetxController {
           context, "Error", "Something went wrong please try again later",
           closeOnBackPress: true, neutralButtonText: "Okay");
     }
+  }
+
+  logout(context) {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Logout'),
+          content: const Text('Are you sure you want to logout?'),
+          actions: <Widget>[
+            MaterialButton(
+              child: const Text('No'),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            MaterialButton(
+              child: const Text(
+                'Yes',
+                style: TextStyle(color: Colors.red),
+              ),
+              onPressed: () async {
+                await Prefs.clear();
+                Get.offAll(SignInScreen());
+              },
+            )
+          ],
+        );
+      },
+    );
   }
 }

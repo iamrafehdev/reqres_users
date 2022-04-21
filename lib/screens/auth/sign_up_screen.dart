@@ -71,6 +71,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         }
                       },
                     ),
+                    SizeBoxHeight16(),
                     InkWell(
                       onTap: () {
                         Get.back();
