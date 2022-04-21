@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reqres_users/config/funx/form_validator/patterns.dart';
+import 'package:reqres_users/config/fun_x/form_validator/patterns.dart';
 
 /// form field validator
 class Validator {

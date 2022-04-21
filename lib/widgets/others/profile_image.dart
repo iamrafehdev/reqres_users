@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:reqres_users/config/funx/functions/extensions.dart';
+import 'package:reqres_users/config/fun_x/functions/extensions.dart';
 import 'package:reqres_users/resources/app_assets.dart';
 
 class AppProfileImage extends StatefulWidget {

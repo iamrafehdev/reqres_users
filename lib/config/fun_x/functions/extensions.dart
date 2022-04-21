@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:reqres_users/config/funx/functions/date_time.dart';
+import 'package:reqres_users/config/fun_x/functions/date_time.dart';
 
 /// String extension functions
 extension StringExtensions on String {

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:reqres_users/config/funx/widgets/span_function.dart';
+import 'package:reqres_users/config/fun_x/widgets/span_function.dart';
 
-/// HighlightedText searchable text
-class HighlightedText extends StatelessWidget {
+/// HighlightedSubText searchable sub text
+class HighlightedSubText extends StatelessWidget {
   final String title;
   final String? search;
   final TextStyle? titleStyle;
   final TextStyle? searchStyle;
   final bool boldTitle;
 
-  const HighlightedText(
+  const HighlightedSubText(
     this.title, {
     Key? key,
     this.search,
@@ -25,12 +25,14 @@ class HighlightedText extends StatelessWidget {
 
     if (titleStyle == null) {
       if (boldTitle) {
+        titleStyle = Theme.of(context).textTheme.bodyText2?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).textTheme.caption?.color);
+      } else {
         titleStyle = Theme.of(context)
             .textTheme
-            .subtitle1
-            ?.copyWith(fontWeight: FontWeight.bold);
-      } else {
-        titleStyle = Theme.of(context).textTheme.subtitle1;
+            .bodyText2
+            ?.copyWith(color: Theme.of(context).textTheme.caption?.color);
       }
     }
 

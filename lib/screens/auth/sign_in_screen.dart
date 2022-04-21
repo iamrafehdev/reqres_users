@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:reqres_users/config/dio/app_dio.dart';
 import 'package:reqres_users/controllers/auth_controller.dart';
+import 'package:reqres_users/screens/auth/sign_up_screen.dart';
 import 'package:reqres_users/widgets/button/app_button.dart';
 import 'package:reqres_users/widgets/fields/icon_field.dart';
 import 'package:reqres_users/widgets/fields/password_field.dart';
@@ -22,7 +23,6 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   void initState() {
     super.initState();
-    _authController.logger.init();
     _authController.dio = AppDio(context);
   }
 
@@ -31,41 +31,56 @@ class _SignInScreenState extends State<SignInScreen> {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        body: Form(
-          key: _loginFormKey,
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  AppText(
-                    'Login to Continue',
-                    size: 28.0,
-                    bold: true,
-                  ),
-                  SizeBoxHeight32(),
-                  AppIconField(
-                    controller: _authController.emailController,
-                    label: 'Email',
-                  ),
-                  SizeBoxHeight8(),
-                  AppPasswordField(
-                    controller: _authController.passwordController,
-                    label: 'Password',
-                  ),
-                  SizeBoxHeight16(),
-                  AppButton(
-                    onPressed: () {
-                      if (_loginFormKey.currentState!.validate()) {
-                        _authController.signIn(context);
-                      }
-                    },
-                    text: 'SignIn',
-                    width: MediaQuery.of(context).size.width * 0.6,
-                  ),
-                ],
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 12.0, right: 12),
+            child: SingleChildScrollView(
+              child: Form(
+                key: _loginFormKey,
+                child: Column(
+                  children: [
+                    Text(
+                      "SignIn to Continue",
+                      style: TextStyle(fontSize: 32),
+                    ),
+                    SizeBoxHeight16(),
+                    AppIconField(
+                      label: "Email Address",
+                      controller: _authController.emailController,
+                      validator: (value) {
+                        if (value!.isEmpty) return "Required";
+                        return null;
+                      },
+                    ),
+                    SizeBoxHeight16(),
+                    AppPasswordField(
+                      label: "Password",
+                      controller: _authController.passwordController,
+                      validator: (value) {
+                        if (value!.isEmpty) return "Required";
+                        return null;
+                      },
+                    ),
+                    SizeBoxHeight16(),
+                    AppButton(
+                      width: MediaQuery.of(context).size.width,
+                      text: "Sign In",
+                      onPressed: () {
+                        if (_loginFormKey.currentState!.validate()) {
+                          _authController.signIn(context);
+                        }
+                      },
+                    ),
+                    SizeBoxHeight16(),
+                    InkWell(
+                      onTap: () {
+                        Get.toNamed('/signUp');
+                      },
+                      child: AppText("Don't have an account? SignUp"),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:reqres_users/config/funx/functions/extensions.dart';
+import 'package:reqres_users/config/fun_x/functions/extensions.dart';
 
 class AppCupertinoBottomSheet extends StatefulWidget {
   final String? title;

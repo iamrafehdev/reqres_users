@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:fialogs/fialogs.dart';
 import 'package:flutter/material.dart';
-import 'package:reqres_users/config/funx/functions/try_catch.dart';
+import 'package:reqres_users/config/fun_x/functions/try_catch.dart';
 
 notConnectedDialog(BuildContext context) {
   errorDialog(
