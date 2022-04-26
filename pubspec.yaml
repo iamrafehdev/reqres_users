@@ -44,6 +44,7 @@ dependencies:
   image_cropper: ^1.5.1
   image_picker: ^0.8.5
   get: ^4.6.1
+  shimmer: ^2.0.0
 
 
 dev_dependencies:
